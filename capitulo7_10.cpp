@@ -6,7 +6,7 @@ enum ItemType
 itemtype_sword,
 itemtype_torch,
 itemtype_potion
-}
+};
 
 std::string getItemName(ItemType itemType)
 {
@@ -23,6 +23,6 @@ return "?????";
 int main ()
 {
 ItemType itemtype { itemtype_torch};
-std::cout << " Your are carryng a " <<  getItemname(itemtype) << '\n';
+std::cout << " Your are carryng a " <<  getItemName(itemtype) << '\n';
 return 0;
 }

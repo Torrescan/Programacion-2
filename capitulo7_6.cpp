@@ -37,9 +37,11 @@ int main()
 {
 
 int color1,color2;
+Color seleccolor= 1;
 cout<<"ingrese un numero del 1 al 8";
 cin >> color1;
-estado = printColor(Color color);
+seleccolor = color1;
+ printColor(seleccolor);
 
 cout<<"Tu color es "<< color2;
 
