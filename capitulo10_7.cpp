@@ -15,10 +15,10 @@ int main()
             cin.ignore(numeric ::limits<streamsize>::max(), '\n');
             continue;
         }
-cin.ignore(numeric::limits<streamsize>::max(), '\n');
-if (age <= 0)
-    continue;
-break;
-    }   
+        cin.ignore(numeric::limits<streamsize>::max(), '\n');
+        if (age <= 0)
+            continue;
+        break;
+    }
     cout << "Ingresaste: " << age << '\n';
 }
