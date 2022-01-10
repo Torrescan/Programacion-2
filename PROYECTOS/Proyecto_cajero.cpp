@@ -7,14 +7,18 @@
 #include <stdlib.h>
 #include <cstdlib>
 #include<conio.h>
-int main (){
-    //DEFINIR VARIABLES
-    int clave =2020,clave2=2021,clave3=2022 , opcion,opcioncuenta,cantidad1= 1000,cantidad2=1000,cantidad3=1000,cantidad11,cantidad22,cantidad33,tarjeta1=123456789,tarjeta2 = 987654321,tarjeta3=11111111;
+using namespace std;
+string resuly,numerotel;
+int interfazrecarga();
+int donaciones();
+int telce[6]{10,20,50,100,200,500},movistar[]{10,20,40,75,150,200,250,300},att[]{10,15,20,30,50,70,100,120,150,200,300,500,1000};//PRECIO DE RECARGAS
+int opcion,recarga,cobro;
+ int clave =2020,clave2=2021,clave3=2022 , opcioncuenta,cantidad1= 1000,cantidad2=1000,cantidad3=1000,cantidad11,cantidad22,cantidad33,tarjeta1=123456789,tarjeta2 = 987654321,tarjeta3=11111111;
     int salir=false, sigoperacion = false, dinerodg= false, usuario1 = false, usuario2 = false, usuario3 = false,contra1,contra2,contra3,ban1,ban2,ban3,buscarcuenta,otraopc;
-    int nuevacontra;
-    //strring clave1,clave2,clave3;
-    
-//DEFINIR VOIDS
+    int nuevacontra,residuo;
+string Recargas(int seleccion);
+int main (){
+   
 
 
   inicio1: 
@@ -106,7 +110,7 @@ default: std::cout<<"USUARIO NO ENCONTRADO O NIP INCORRECTO\n";
    nuevaopcion:
    std::cout<<"========================================================\n";
    std::cout<<"¿QUE FUNCION DESEAS REALIZAR ?\n";
- std::cout<<"1)DEPOSITAR\n2)RETIRAR\n3)REVISAR CARTERA\n4)TRANFERIR DINERO\n 5)CAMBIAR NIP\n 6)SALIR\n";
+ std::cout<<"1)DEPOSITAR\n2)RETIRAR\n3)REVISAR CARTERA\n4)TRANFERIR DINERO\n 5)CAMBIAR NIP\n 6)REALIZAR UNA RECARGA TELEFONICA\n 7)DONAR\n 8)SALIR\n";
  std::cin >> opcion;
 switch(opcion){
 case 1 :
@@ -165,18 +169,24 @@ switch (opcioncuenta)
     case 123456789:
     std::cout<<"INGRESE LA CANTIDAD QUE DESEA RETIRAR A SUS FONDOS\n";
     std::cin >> cantidad11;
-    if ((cantidad11<cantidad1) &&(cantidad11 <= 9000) )
+    if ((cantidad11<cantidad1) && (cantidad11 <= 9000) )
     {
-if((cantidad11%50=0))
+      residuo =(cantidad11%50);
+      
+if((residuo=0))
 {
-
-
+ std::cout<<("CANTIDAD APROBADA\n");
+ cantidad1 = cantidad1 - cantidad11;
+   std::cout << "OPERACION REALIZADA CON EXITO\n";
+   std::cout << "$ "<<cantidad1 << "  FONDOS ACTUALES\n";
+}
+else
+{
+   std::cout<<("MONTO INGRESADO NO VALIDO\n");
 }
 
 
-   cantidad1 = cantidad1 - cantidad11;
-   std::cout << "OPERACION REALIZADA CON EXITO\n";
-   std::cout << "$ "<<cantidad1 << "  FONDOS ACTUALES\n";
+  
   }
   else{
   std::cout<<("MONTO INGRESADO NO VALIDO\n");
@@ -187,10 +197,15 @@ if((cantidad11%50=0))
 std::cin >> cantidad22;
 if ((cantidad22<cantidad2)&&(cantidad22 <= 9000))
 {
+  residuo = (cantidad22%50);
+      
+  if((residuo=0)){/////////11111
+
 
 cantidad2 = cantidad2 - cantidad22;
 std::cout << "OPERACION REALIZADA CON EXITO\n";
-std::cout << "$ "<<cantidad2 << "  FONDOS ACTUALES\n";
+std::cout << "$ "<<cantidad2 << "  FONDOS ACTUALES\n";}
+
 }
 else
 std::cout<<("MONTO INGRESADO NO VALIDO\n");
@@ -200,14 +215,16 @@ std::cout<<("MONTO INGRESADO NO VALIDO\n");
 std::cin >> cantidad33;
 if ((cantidad33<cantidad3) &&(cantidad33 <= 9000))
 {
-
+   residuo = (cantidad33%50);
+      
+if((residuo=0)){
    
   cantidad3 = cantidad3 - cantidad33;
    std::cout << "OPERACION REALIZADA CON EXITO\n";
-   std::cout << "$ "<<cantidad3 << "  FONDOS ACTUALES\n";
+   std::cout << "$ "<<cantidad3 << "  FONDOS ACTUALES\n";}
   }
-    else
-  std::cout<<("MONTO INGRESADO NO VALIDO\n");
+    else{
+  std::cout<<("MONTO INGRESADO NO VALIDO\n");}
     break;
   
     default: std::cout<<("CARACTER NO VALIDO \n");
@@ -508,6 +525,12 @@ default:
 }
 break;
 case 6:
+interfazrecarga();
+break;
+case 7:
+donaciones();
+break;
+case 8:
 salir=true;
 break;
 default: printf("OPCION NO VALIDA\n");
@@ -523,3 +546,88 @@ std::cout<<("ESTE MENSAJE NO LO VA MOSTRAR\n");
 return 0;
 
 }
+int interfazrecarga(){
+std::cout<<("A QUE COMPAÑIA DESEAS REALIZAR LA RECARGA\n 1)TELCEL\n 2)MOVISTAR\n 3)AT&T\n 4)CANCELAR\n");
+  std::cin>>opcion;
+switch (opcion)
+{
+case 1:cout<<"TELCEL\n ================SELECCIONE EL PAQUETE QUE DESEAS COMPRAR==============\n 1)$10\n 2)$20\n 3)$50\n 4)$100\n 5)$200\n 6)$500\n ";
+cin >> recarga;
+if (recarga>6 || recarga<0){cout<<"OPERACION NO VALIDA\n";interfazrecarga();  }
+else {cout<<"INTRODUZCA EL NUMERO TELEFONICO\n";cin>>numerotel;if(numerotel.length() != 10){cout<<"NUMERO NO VALIDO\n";interfazrecarga();}resuly = Recargas(recarga);cout<<resuly;}
+break;
+case 2:cout<<"MOVISTAR\n ================SELECCIONE EL PAQUETE QUE DESEAS COMPRAR==============\n 1)$10\n 2)$20\n 3)40\n 4)$75\n 5)$150\n 6)$200\n 7)250\n 8)300\n ";
+cin >> recarga;
+if (recarga>8 || recarga<0){ cout<<"OPERACION NO VALIDA\n";interfazrecarga(); }
+else {cout<<"INTRODUZCA EL NUMERO TELEFONICO\n";cin>>numerotel;if(numerotel.length() != 10){cout<<"NUMERO NO VALIDO\n";interfazrecarga();}resuly = Recargas(recarga);cout<<resuly;}
+break;
+case 3:cout<<"AT&T\n ================SELECCIONE EL PAQUETE QUE DESEAS COMPRAR==============\n 1)$10\n 2)$15\n 3)$20\n 4)$30\n 5)$50\n 6)$70\n 7)$100\n 8)$120\n 9)$150\n 10)$200\n 11)$300\n 12)$500\n 13)1000\n ";
+cin >> recarga;
+if (recarga>13 || recarga<0){ cout<<"OPERACION NO VALIDA\n";interfazrecarga(); }
+else {cout<<"INTRODUZCA EL NUMERO TELEFONICO\n";cin>>numerotel;if(numerotel.length() != 10){cout<<"NUMERO NO VALIDO\n";interfazrecarga();}resuly = Recargas(recarga);cout<<resuly;}
+break;
+case 4:
+printf("==============OPERACION CANCELADA===========\n");
+break;
+default:printf("==========OPCION NO VALIDA==============\n");
+  break;
+}
+return 0;
+}
+
+
+string Recargas(int seleccion){
+  seleccion = seleccion -1;
+switch (opcion)
+{
+case 1:
+cobro = telce[seleccion];
+  break;
+  case 2:
+  cobro = movistar[seleccion];
+  break;
+  case 3:
+  cobro = att[seleccion];
+  break;
+default:printf("OPCION NO VALIDA\n");
+  break;
+}
+
+switch (opcioncuenta)
+{
+case 123456789:
+if(cobro<cantidad1){cantidad1 = (cantidad1-cobro);return "TRANSACCION EXITOSA\n " ;}else{return "NO CUENTAS CON EL PRESUPUESTO\n ";interfazrecarga();}
+  break;
+case 987654321:
+if(cobro<cantidad2){cantidad2 = (cantidad2-cobro);return "TRANSACCION EXITOSA\n " ;}else{return "NO CUENTAS CON EL PRESUPUESTO\n ";interfazrecarga();}
+break;
+case 11111111:
+if(cobro<cantidad3){cantidad3 = (cantidad3-cobro);return "TRANSACCION EXITOSA\n " ;}else{return "NO CUENTAS CON EL PRESUPUESTO\n ";interfazrecarga();}
+break;
+default:printf("OPCION NO VALIDA\n");
+  break;
+}
+  return 0;
+}
+
+int donaciones(){
+
+cout<<"==============BIENVENIDO A DONACIONES===========\n";
+cout<<"QUE TIPO DE DONACION QUIERES HACER?\n 1)NIÑOS AFRICA\n 2)CONSTRUCCION DE ESCUELAS\n 3)DESPENSAS PARA FAMILIAS NECESITADAS\n 4)CANCELAR\n";
+cin>>opcion;cout<<"=====================================\n";
+if((opcion ==1) || (opcion==2) || (opcion==3) ){cout<<"==============CANTIDAD QUE DESEAS DONAR?===========\n";cin>>cantidad11;
+switch (opcioncuenta)
+{
+case 123456789: if ((cantidad11 <= cantidad1) && cantidad11!= 0 ){cantidad1 = (cantidad1-cantidad11);cout<<"DONACION EXITOSA\n";}else{cout<<"MONTO NO VALIDO\n";donaciones();}
+  break;
+  case 987654321:if ((cantidad11 <= cantidad2) && cantidad1!= 0 ){cantidad22 = (cantidad22-cantidad11);cout<<"DONACION EXITOSA\n";}else{cout<<"MONTO NO VALIDO\n";donaciones();}
+break;
+case 11111111:if ((cantidad11 <= cantidad3) && cantidad1!= 0 ){cantidad33 = (cantidad33-cantidad11);cout<<"DONACION EXITOSA\n";}else{cout<<"MONTO NO VALIDO\n";donaciones();}
+  break;
+}
+}else if(opcion == 4){cout<<"==============OPERACION CANCELADA===========\n"; }else{cout<<"==============OPCION NO VALIDA===========\n"; donaciones();}
+
+return 0;
+}
+
+

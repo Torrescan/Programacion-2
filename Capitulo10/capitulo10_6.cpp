@@ -10,7 +10,7 @@ int age{};
 cout << "Ingrese su edad: ";
  cin >> age;
 if (cin.fail())
-cin.clear(); /
+cin.clear(); //
 cin.ignore (numeric_limits<streamsize>:: max(), '\n'); 
 continue;
  
@@ -20,5 +20,5 @@ continue;
 
 break;
  }
-cout << "Ingresaste: "«c age << '\n';
+cout << "Ingresaste: "<< age << '\n';
 }

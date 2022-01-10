@@ -35,7 +35,7 @@ int main()
 {
   while (true)
   {
-    system("cls");
+    //system("cls");
     cout << "************ CAJERO AUTOMATICO ************\n";
     interfazMenu();
         system("pause");
@@ -51,7 +51,7 @@ void interfazDepositar()
   cin >> monto;
   string estado = depositar(monto);
   cout << estado;
-  system("pause");
+ // system("pause");
 }
 string depositar(int monto)
 {
@@ -72,7 +72,7 @@ void interfazRetiro()
   cin >> monto;
   string estado = retirar(monto);
   cout << estado;
-  system("PAUSE");
+  //system("PAUSE");
 }
 
 string retirar(int monto)
@@ -111,7 +111,7 @@ void interfazTransferir()
     cout << " usuario incorrecto\n";
   system("pause");
 }
-
+//goto
 string transferir(int monto)
 {
   if (monto <= 0)
@@ -129,7 +129,7 @@ void estadoCuenta()
  cout << "Numero de tarjeta: " << usuarios[usuarioActual].cuenta << '\n';
  cout << "Dinero actual: " << usuarios[usuarioActual].saldo << '\n';
  cout << "NIP: " << usuarios[usuarioActual].NIP << '\n';
- system ("pause");
+ //system ("pause");
 }
 
 int interfazRecarga()
@@ -303,7 +303,7 @@ int interfazMenuUsuario()
   }
   return 0;
   }
-system ("Pause");
+//system ("Pause");
 }
 
 int interfazMenu()
