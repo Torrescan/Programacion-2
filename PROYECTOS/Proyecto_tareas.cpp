@@ -9,6 +9,19 @@
 #include<conio.h>
 #include<fstream>
 using namespace std;
+struct usuarios
+{
+string nombre;
+string recordatorio[100];
+int dia;
+ string mes;
+ int anio;
+double fecha[];
+
+};
+usuarios Usuarios;
+int overflo;
+void categorias();
 void inicio();
 void nuevacate();
 int main(){
@@ -18,21 +31,37 @@ int main(){
 
 void inicio()
 {
-    string nombr;
-cout<<"======================BIENVENIDOS AL SISTEMA DE GUARDADO DE EVENTOS=====================\nPOR FAVOR INGRESE SU NOMBRE :\n";;cin>>nombr;
+   
+cout<<"======================BIENVENIDOS AL SISTEMA DE GUARDADO DE EVENTOS=====================\nPOR FAVOR INGRESE SU NOMBRE :\n";;cin>>Usuarios.nombre;
+cout<<"BIENVENIDO "<<Usuarios.nombre<<"\n";
 
 }
 
 void nuevorecorda(){
     int opc;
-cout<<"QUIERES AGREGAR UN NUEVO RECORDATORIO ?\n 1)SI\n 2)NO\n ";cin>>opc;switch (expression)
+int saliir = false;
+    do{
+cout<<"QUIERES AGREGAR UN NUEVO RECORDATORIO ?\n 1)SI\n 2)NO\n ";cin>>opc;switch (opc)
 {
-case /* constant-expression */:
-    /* code */
+case 1:cout<<"NOMBRE AL RECORDATORIO :\n";
+    break;
+    case 2:saliir = true;
     break;
 
 default:
     break;
 }
+    }while(saliir==false);
+}
+void categorias()
+{
+     cout<<"===================================================================\n";
+  for (int i = 0; i < overflo; i++)
+  {
+     
+    cout<<i<<")"<<Usuarios.recordatorio[i]<<"       "<<"$ ";
 
+  
+  }
+  
 }
